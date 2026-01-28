@@ -1,0 +1,33 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Lunar Lander",
+    "homeUrl": "https://[YOUR_DOMAIN]/",
+    "iconUrl": "https://[YOUR_DOMAIN]/icon.png",
+    "imageUrl": "https://[YOUR_DOMAIN]/hero-image.png",
+    "buttonTitle": "Play Now",
+    "splashImageUrl": "https://[YOUR_DOMAIN]/hero-image.png",
+    "splashBackgroundColor": "#0a0a0a",
+    "webhookUrl": "https://[YOUR_DOMAIN]/api/webhook",
+    "subtitle": "Retro lunar landing challenge",
+    "description": "Master physics and fuel management to safely land your spacecraft on the moon. Classic arcade gameplay with modern touch controls.",
+    "screenshotUrls": [
+      "https://[YOUR_DOMAIN]/screenshot-1.png",
+      "https://[YOUR_DOMAIN]/screenshot-2.png"
+    ],
+    "primaryCategory": "games",
+    "tags": ["arcade", "retro", "physics", "space"],
+    "heroImageUrl": "https://[YOUR_DOMAIN]/hero-image.png",
+    "tagline": "Land safely or crash spectacularly",
+    "ogTitle": "Lunar Lander - Retro Space Game",
+    "ogDescription": "Physics-based lunar landing challenge. Navigate gravity, manage fuel, and stick the landing!",
+    "ogImageUrl": "https://[YOUR_DOMAIN]/hero-image.png",
+    "noindex": false,
+    "requiredChains": ["eip155:8453"]
+  }
+}
