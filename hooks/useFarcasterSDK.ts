@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useAccount } from "wagmi";
 
 interface FarcasterUser {
   fid: number;
@@ -9,51 +9,21 @@ interface FarcasterUser {
   pfpUrl?: string;
 }
 
-interface FarcasterSDK {
-  openUrl: (url: string) => Promise<void>;
-  close: () => Promise<void>;
-}
-
 export function useFarcasterSDK() {
-  const [user, setUser] = useState<FarcasterUser | null>(null);
-  const [sdk, setSdk] = useState<FarcasterSDK | null>(null);
+  const { address } = useAccount();
 
-  useEffect(() => {
-    import('@farcaster/miniapp-sdk')
-      .then(async (module) => {
-        const context = await module.sdk.context;
-        setUser(context.user);
-        setSdk({
-          openUrl: module.sdk.actions.openUrl,
-          close: module.sdk.actions.close,
-        });
-      })
-      .catch(() => {
-        console.warn('Running outside Farcaster environment');
-      });
-  }, []);
+  const user: FarcasterUser | null = address
+    ? {
+        fid: 0,
+        displayName: `${address.slice(0, 6)}…${address.slice(-4)}`,
+      }
+    : null;
 
   const openUrl = async (url: string) => {
-    if (sdk) {
-      try {
-        await sdk.openUrl(url);
-      } catch {
-        window.open(url, '_blank');
-      }
-    } else {
-      window.open(url, '_blank');
-    }
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const close = async () => {
-    if (sdk) {
-      try {
-        await sdk.close();
-      } catch {
-        window.close();
-      }
-    }
-  };
+  const close = async () => {};
 
   return { user, openUrl, close };
 }
